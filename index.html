@@ -7,6 +7,10 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Epicode Calendar</title>
 
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;700&display=swap" rel="stylesheet">
+
   <link rel="stylesheet" href="style.css" />
 </head>
 
@@ -21,10 +25,21 @@
     <div id="appointments-area">
       <h2>Appointments for the day</h2>
       <div id="appointment-inputs">
-        <!-- Here we will have the inputs -->
+        <input type="time" id="appointment-time" value="09:00" />
+        <input type="text" id="appointment-title" placeholder="Enter title..." />
+        <input type="button" value="Save" />
       </div>
       <div id="appointments-list">
-        <!-- Here we will have the list of inputs -->
+        <ul id="appointments-list-ul">
+          <!--
+          APPOINTMENTS ADDED DYNAMICALLY WITH JS.
+
+          They will look like this:
+          <li>12:00 - Lunch</li>
+          <li>13:00 - Meeting with Tom</li>
+          <li>20:00 - Soccer</li>
+          -->
+        </ul>
       </div>
     </div>
   </div>
