@@ -48,6 +48,15 @@ h2 {
   cursor: pointer;
 }
 
+.day:hover {
+  background-color: rgb(60,60,100);
+}
+
+.day.selected {
+  border-color: rgb(220,100,220);
+  background-color: rgb(60,60,100);
+}
+
 /* APPOINTMENTS AREA (ON THE RIGHT) */
 #appointments-area {
   display: inline-block;

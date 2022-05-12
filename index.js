@@ -18,11 +18,32 @@ function displayDays() {
     // 2) We customize it
     dayNode.classList.add('day')
     dayNode.innerText = day
-    // TODO -- add onClick on day when we have a function for that.
+    dayNode.addEventListener("click", selectDay) // this will give the event info object to the function
 
     // 3) We attach it to the DOM, append
     daysArea.appendChild(dayNode)
   }
+}
+
+function selectDay(event) { // We get the event object as a parameter
+  // 1) Get the previously selected node
+  // document.getElementsByClassName('selected')[0]
+  let previouslySelectedNode = document.querySelector('.day.selected')
+
+  // 2) Remove the class from there
+  if (previouslySelectedNode !== null) {
+    // If previously selecte node IS null, it's the first node we select,
+    // we do not need to remove the selected class
+    // because we have no previous node
+    previouslySelectedNode.classList.remove('selected')
+  }
+
+  // 3) We get the clicked node
+  let clickedNode = event.target
+  // ^^^ This is the .day div
+
+  // 4) We add the class there
+  clickedNode.classList.add("selected")
 }
 
 function executeOnLoad() {
