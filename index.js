@@ -140,7 +140,9 @@ function saveAppointment() {
   let selectedDayNode = document.querySelector('.day.selected')
   let selecetedDayNumber = selectedDayNode.innerText
 
-  appointments[selecetedDayNumber - 1].push(appointment)
+
+  let appointmentsForTheDay = appointments[selecetedDayNumber - 1]
+  appointmentsForTheDay.push(appointment)
 
   // We also need to call showAppointments so that the new appointment
   // is displayed.
