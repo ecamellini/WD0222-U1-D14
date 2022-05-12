@@ -31,7 +31,7 @@ let exampleDay = [
 // A calendar for us is 30 days.
 // A list of days.
 // Which means a list of lists of objects (each object is an appointment).
-let appointments = [
+let exampleAppointments = [
   [ { time: "9:00", title: "Lecture"}, { time: "12:00", title: "Lunch"} ], // First day
   [ { time: "14:00", title: "Coffee"} ], // Second day
   [ { time: "15:00", title: "Running"}, { time: "16:00", title: "Coding"} ] // Third day
@@ -39,6 +39,9 @@ let appointments = [
   // This will be 30 items...one list of appointments for each day.
 ]
 
+// THIS IS THE ACTUAL VARIABLE WE WILL USE AS MEMORY.
+// ABOVE YOU CAN SEE HOW IT'S STRUCTURED
+let appointments = []
 /* ----------------------------------------------------------- */
 
 
@@ -66,6 +69,9 @@ function displayDays() {
 
     // 3) We attach it to the DOM, append
     daysArea.appendChild(dayNode)
+
+    // 4) When we display a day, we also create its list of appointments (empty, at the moment)
+    appointments[day - 1] = []
   }
 }
 
