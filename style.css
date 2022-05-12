@@ -48,7 +48,7 @@ h2 {
   cursor: pointer;
 }
 
-/* DAYS AREA (ON THE RIGHT) */
+/* APPOINTMENTS AREA (ON THE RIGHT) */
 #appointments-area {
   display: inline-block;
   vertical-align: top;
@@ -81,6 +81,7 @@ h2 {
 
 #appointment-time::-webkit-calendar-picker-indicator {
   filter: invert(100%);
+  cursor: pointer;
 }
 
 #appointment-title {
@@ -93,6 +94,7 @@ h2 {
   height: 54px;
   background-color: rgb(140,60,140);
   font-weight: bolder;
+  cursor: pointer;
 }
 
 #appointments-list li {
