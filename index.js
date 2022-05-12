@@ -126,6 +126,29 @@ function showAppointments() {
   }
 }
 
+
+function saveAppointment() {
+  // Create a new appoinment object using the input values
+  let timeInputValue = document.getElementById('appointment-time').value
+  let titleInputValue = document.getElementById('appointment-title').value
+  let appointment = {
+    time: timeInputValue,
+    title: titleInputValue
+  }
+
+  // We get the selected day number
+  let selectedDayNode = document.querySelector('.day.selected')
+  let selecetedDayNumber = selectedDayNode.innerText
+
+  appointments[selecetedDayNumber - 1].push(appointment)
+
+  // We also need to call showAppointments so that the new appointment
+  // is displayed.
+  // Actually, this will re-desplay all of them, for the selected day.
+  showAppointments()
+}
+
+
 function executeOnLoad() {
   // We write everything we want to happen on load.
   displayDays()
