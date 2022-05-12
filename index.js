@@ -1,3 +1,46 @@
+/*
+MEMORY OF THE APPLICATION:
+It's where we store the meetings, the current state of the application.
+The initial state is:
+- No meetings
+
+Every time you add a meeting --> you modify the state of the app, you add a meeting.
+
+---
+*/
+
+// MODELING AN APPOINTMENT
+// A meeting is represented by:
+// - time
+// - title
+// Let's assume both of these are strings.
+let exampleMeeting = {
+  time: "09:00",
+  title: "Lecture"
+}
+
+// MODELING A DAY
+// A day is a list of appointments
+let exampleDay = [
+  { time: "9:00", title: "Lecture"},
+  { time: "13:00", title: "Lunch"},
+  { time: "20:00", title: "Football with friends"}
+]
+
+// MODELING OUR CALENDAR
+// A calendar for us is 30 days.
+// A list of days.
+// Which means a list of lists of objects (each object is an appointment).
+let appointments = [
+  [ { time: "9:00", title: "Lecture"}, { time: "12:00", title: "Lunch"} ], // First day
+  [ { time: "14:00", title: "Coffee"} ], // Second day
+  [ { time: "15:00", title: "Running"}, { time: "16:00", title: "Coding"} ] // Third day
+  // Etc. etc.
+  // This will be 30 items...one list of appointments for each day.
+]
+
+/* ----------------------------------------------------------- */
+
 
 // Constant value, available to all our JS file.
 const daysToDisplay = 30
@@ -19,6 +62,7 @@ function displayDays() {
     dayNode.classList.add('day')
     dayNode.innerText = day
     dayNode.addEventListener("click", selectDay) // this will give the event info object to the function
+    dayNode.addEventListener("click", showAppointments)
 
     // 3) We attach it to the DOM, append
     daysArea.appendChild(dayNode)
@@ -44,6 +88,42 @@ function selectDay(event) { // We get the event object as a parameter
 
   // 4) We add the class there
   clickedNode.classList.add("selected")
+}
+
+function showAppointments() {
+  // In this function we go from data to some visualization of the data in the UI.
+  // In this case, from appointments to <li> tags...
+  // Data is in variables in our program.
+  // Usually it comes from somewhere else, from the database, from the back-end.
+
+  let selectedDayNode = document.querySelector('.day.selected')
+  let selecetdDayNumber = selectedDayNode.innerText
+
+  // For every appointment in my list of appointments
+  // we need to create a new li, and attach it to the appointments-list
+  let appointmentsForTheDay = appointments[selecetdDayNumber - 1]
+
+  let appointmentsUlNode = document.getElementById('appointments-list')
+
+  // Before adding the LI tags for the selected day appointments
+  // we need to clear the appointment UL.
+  // We don't want to see also the appointments for other days...
+  appointmentsUlNode.replaceChildren([])
+  // ^^ We are replacing the children of the UL with an empty list of children...
+  // So we are removing them, basically.
+
+  for (let i = 0; i < appointmentsForTheDay.length; i++) {
+    let appointment = appointmentsForTheDay[i]
+
+    // 1) We create the new li
+    let newLiNode = document.createElement('li')
+
+    // 2) We customize it
+    newLiNode.innerText = appointment.time + " - " + appointment.title
+
+    // 3) Append it/attach it to the DOM, to its parent element
+    appointmentsUlNode.appendChild(newLiNode)
+  }
 }
 
 function executeOnLoad() {
