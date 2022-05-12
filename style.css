@@ -1,0 +1,35 @@
+body {
+  background-color: rgb(16,19,53);
+  color: white;
+  text-align: center;
+}
+
+#container {
+  max-width: 1400px;
+  margin: 0 auto; /* Usual trick to center horizontally */
+}
+
+#days-area {
+  border: 2px solid rgb(140,60,140);
+  display: inline-block;
+  width: 55%;
+}
+
+.day {
+  height: 100px;
+  width: 100px;
+  border: 2px solid rgb(140,60,140);
+  display: inline-block;
+}
+
+#appointments-area {
+  display: inline-block;
+}
+
+/* #appointment-inputs {
+
+}
+
+#appointments-list {
+
+} */
